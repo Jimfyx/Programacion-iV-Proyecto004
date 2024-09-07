@@ -9,7 +9,6 @@ import java.util.concurrent.BlockingQueue;
 
 public class Buffer {
     private BlockingQueue<Integer> buffer;
-    private int count = 0;
     private int capacity;
 
     public Buffer(int capacity) {
@@ -19,12 +18,10 @@ public class Buffer {
 
     public  void producir(int valor) throws InterruptedException {
         buffer.put(valor);
-        count++;
         System.out.println("Producir valor: " + valor);
     }
 
     public int consumir() throws InterruptedException {
-        count--;
         int valor = buffer.take();
         System.out.println("Consumir valor: " + valor);
         return valor;
